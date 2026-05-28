@@ -1,7 +1,13 @@
 import { Link } from "react-router";
 import "./header.css";
 
-export default function Navbar() {
+export default function Navbar({ cart }) {
+	let totalQuantityCart = 0;
+
+	cart.forEach((item) => {
+		totalQuantityCart += item.quantity;
+	});
+
 	return (
 		<>
 			<div className="header">
@@ -27,7 +33,7 @@ export default function Navbar() {
 
 					<Link className="cart-link header-link" to="/checkout">
 						<img className="cart-icon" src="images/icons/cart-icon.png" />
-						<div className="cart-quantity">3</div>
+						<div className="cart-quantity">{Number(totalQuantityCart)} </div>
 						<div className="cart-text">Cart</div>
 					</Link>
 				</div>
